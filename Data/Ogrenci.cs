@@ -10,7 +10,7 @@ namespace efcoreApp.Data
 
         public string? OgrenciAd { get; set; }
 
-        public string? Ogrencisoyad { get; set; }
+        public string? OgrenciSoyad { get; set; }
 
         public string? Eposta { get; set; }
 
