@@ -7,9 +7,18 @@ namespace efcoreApp.Data
         [Key]
         public int KayitId { get; set; }
 
+
         public int OgrenciId { get; set; }
+        //JOIN işlemi için        
+        public Ogrenci Ogrenci {get; set; } = null!;
+
+
 
         public int KursId { get; set; }
+        //JOIN işlemi için        
+        public Kurs Kurs {get; set; } = null!;
+
+
 
         public DateTime KayitTarihi { get; set; }
     }
