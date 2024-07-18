@@ -95,5 +95,40 @@ namespace efcoreApp.Controllers
         }
 
 
+
+        [HttpGet]
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if(id == null)
+            {
+                return NotFound();
+            }
+
+            var kurs = await _context.Kurslar.FindAsync(id);
+
+            if(kurs == null)
+            {
+                return NotFound();
+            }
+
+            return View(kurs);
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> Delete([FromForm] int id) //Model Binding nereden geliyor. Burada formdan
+        {
+
+            var kurs = await _context.Kurslar.FindAsync(id);
+            if(kurs == null)
+            {
+                return NotFound();
+            }
+            _context.Kurslar.Remove(kurs);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index");
+        }
+
+
     }
 }
