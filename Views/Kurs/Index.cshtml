@@ -9,7 +9,7 @@
                 <tr>
                     <th style="width: 150px;">@Html.DisplayNameFor(m=> m.KursId)</th>
                     <th>@Html.DisplayNameFor(m=> m.Baslik)</th>
-                    <th style="width: 150px;"></th>
+                    <th style="width: 180px;"></th>
                 </tr>
     
         </thead>
@@ -24,6 +24,7 @@
                         <td>
                             <a asp-controller="Kurs" asp-action="Edit" asp-route-id="@item.KursId" class="btn btn-sm btn-primary">Edit</a>
                             <a asp-controller="Kurs" asp-action="Delete" asp-route-id="@item.KursId" class="btn btn-sm btn-danger">Delete</a>
+                            <a asp-controller="Kurs" asp-action="Detail" asp-route-id="@item.KursId" class="btn btn-sm btn-danger">Detail</a>
                         </td>
                 </tr>
                }

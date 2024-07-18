@@ -55,7 +55,7 @@ namespace efcoreApp.Controllers
                 return NotFound();
             }
 
-            var ogr = await _context.Ogrenciler.FindAsync(id); //FinAsync ile sadece Id ile arama yapılır
+            var ogr = await _context.Ogrenciler.Include(o=>o.KursKayitlari).ThenInclude(o=>o.Kurs).FirstOrDefaultAsync(o=>o.OgrenciId==id); //FinAsync ile sadece Id ile arama yapılır
             // var orgr = await _context.Ogrenciler.FirstOrDefaultAsync(o => o.Eposta == eposta ) // Sadece Id ile değil diğer alanlarla da arama yapılıp getirilir
            
             if(ogr==null)
