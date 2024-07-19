@@ -47,6 +47,9 @@ namespace efcoreApp.Controllers
             return RedirectToAction("Index");
         }
 
+
+
+
         [HttpGet]
         public async Task<IActionResult> Edit(int? id)
         {
@@ -137,6 +140,29 @@ namespace efcoreApp.Controllers
             _context.Ogrenciler.Remove(ogrenci);
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");
+        }
+
+
+
+
+
+        [HttpGet]
+        public async Task<IActionResult> Detail(int? id)
+        {
+            if(id==null)
+            {
+                return NotFound();
+            }
+
+            var ogr = await _context.Ogrenciler.Include(o=>o.KursKayitlari).ThenInclude(o=>o.Kurs).FirstOrDefaultAsync(o=>o.OgrenciId==id); //FinAsync ile sadece Id ile arama yapılır
+            // var orgr = await _context.Ogrenciler.FirstOrDefaultAsync(o => o.Eposta == eposta ) // Sadece Id ile değil diğer alanlarla da arama yapılıp getirilir
+           
+            if(ogr==null)
+            {
+                return NotFound();
+            }
+
+            return View(ogr);
         }
 
     }

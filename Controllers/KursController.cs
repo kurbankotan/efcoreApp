@@ -132,5 +132,29 @@ namespace efcoreApp.Controllers
         }
 
 
+
+        public async Task<IActionResult> Detail(int? id)
+        {
+            if(id==null)
+            {
+                return NotFound();
+            }
+
+            var kurs = await _context.Kurslar.Include(k=>k.KursKayitlari).ThenInclude(k=>k.Ogrenci).FirstOrDefaultAsync(k =>k.KursId==id); 
+            
+            //FinAsync ile sadece Id ile arama yapılır
+            // var orgr = await _context.Kurslar.FirstOrDefaultAsync(o => o.Tarihler == Tarihler ) // Sadece Id ile değil diğer alanlarla da arama yapılıp getirilir
+           
+            if(kurs==null)
+            {
+                return NotFound();
+            }
+
+            return View(kurs);
+        
+        }
+
+
+
     }
 }

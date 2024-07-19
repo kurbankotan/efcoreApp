@@ -50,6 +50,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3Vyc1xEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/PC/OneDrive - duzce.edu.tr/Programlama Çalışmaları/Aspnet Core/efcoreApp/Views/Kurs/Detail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3Vyc1xEZXRhaWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/PC/OneDrive - duzce.edu.tr/Programlama Çalışmaları/Aspnet Core/efcoreApp/Views/Kurs/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3Vyc1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -64,6 +68,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/PC/OneDrive - duzce.edu.tr/Programlama Çalışmaları/Aspnet Core/efcoreApp/Views/Ogrenci/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2dyZW5jaVxEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/PC/OneDrive - duzce.edu.tr/Programlama Çalışmaları/Aspnet Core/efcoreApp/Views/Ogrenci/Detail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2dyZW5jaVxEZXRhaWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/PC/OneDrive - duzce.edu.tr/Programlama Çalışmaları/Aspnet Core/efcoreApp/Views/Ogrenci/Edit.cshtml]

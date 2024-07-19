@@ -1,0 +1,12 @@
+@model Kurs
+
+<h2>Kursa Kayıtlı Kursiyer Listesi</h2>
+
+
+<ul>
+    @foreach(var item in @Model.KursKayitlari)
+    {
+        <li>@item.Ogrenci.AdSoyad</li>
+    }
+</ul>
+

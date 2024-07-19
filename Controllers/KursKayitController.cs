@@ -52,15 +52,15 @@ namespace efcoreApp.Controllers
             ViewBag.Kurslar = new SelectList( await _context.Kurslar.ToListAsync(), "KursId", "Baslik");
 
 
-            var krs = await _context.KursKayitlari.FindAsync(id); //FinAsync ile sadece Id ile arama yapılır
+            var kurkayit = await _context.KursKayitlari.FindAsync(id); //FinAsync ile sadece Id ile arama yapılır
             // var orgr = await _context.KursKayitlari.FirstOrDefaultAsync(o => o.Eposta == eposta ) // Sadece Id ile değil diğer alanlarla da arama yapılıp getirilir
            
-            if(krs==null)
+            if(kurkayit==null)
             {
                 return NotFound();
             }
 
-            return View(krs);
+            return View(kurkayit);
         }
 
 
@@ -103,6 +103,11 @@ namespace efcoreApp.Controllers
 
             return RedirectToAction("Index");
         }
+
+
+
+
+
 
 
 

@@ -5,6 +5,7 @@
 <form asp-controller = "KursKayit" asp-action ="Edit" method="post">
 
     <input type="hidden" asp-for="KayitId">
+    
     <div class="mb-3">
         <label asp-for="OgrenciId" class="form-label">Öğrenci</label>
         <select asp-for="OgrenciId" asp-items="ViewBag.Ogrenciler" class="form-control">
