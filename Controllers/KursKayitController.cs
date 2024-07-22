@@ -43,66 +43,69 @@ namespace efcoreApp.Controllers
         [HttpGet]
         public async Task<IActionResult> Edit(int? id)
         {
-            if(id==null)
-            {
-                return NotFound();
-            }
+                if (id == null)
+                {
+                    return NotFound();
+                }
 
-            ViewBag.Ogrenciler = new SelectList( await _context.Ogrenciler.ToListAsync(), "OgrenciId", "AdSoyad");
-            ViewBag.Kurslar = new SelectList( await _context.Kurslar.ToListAsync(), "KursId", "Baslik");
+                var kurskayit = await _context.KursKayitlari
+                    .Include(x => x.Ogrenci)
+                    .Include(x => x.Kurs)
+                    .FirstOrDefaultAsync(m => m.KayitId == id);
 
+                if (kurskayit == null)
+                {
+                    return NotFound();
+                }
 
-            var kurkayit = await _context.KursKayitlari.FindAsync(id); //FinAsync ile sadece Id ile arama yapılır
-            // var orgr = await _context.KursKayitlari.FirstOrDefaultAsync(o => o.Eposta == eposta ) // Sadece Id ile değil diğer alanlarla da arama yapılıp getirilir
-           
-            if(kurkayit==null)
-            {
-                return NotFound();
-            }
+                ViewBag.Ogrenciler = new SelectList(await _context.Ogrenciler.ToListAsync(), "OgrenciId", "AdSoyad", kurskayit.OgrenciId);
+                ViewBag.Kurslar = new SelectList(await _context.Kurslar.ToListAsync(), "KursId", "Baslik", kurskayit.KursId);
 
-            return View(kurkayit);
+                return View(kurskayit);
         }
 
 
 
 
 
-        [HttpPost]
-        [ValidateAntiForgeryToken] // Sayfada form içinde hiddden olarak oluşturulan __RequestVerificationToken'nin oluşturulması istenilir.
-                                   // Böylelikle formu gönderenin isteyen kişi ile aynı olduğu denetlenmiş olur
-        public async Task<IActionResult> Edit(int id, KursKayit model)
-        {
-            if(id != model.KayitId)
+            [HttpPost]
+            [ValidateAntiForgeryToken]
+            public async Task<IActionResult> Edit(int id, KursKayitEditModel model)
             {
-                return NotFound();
-            }
+                if (id != model.KayitId)
+                {
+                    return NotFound();
+                }
+                
 
-
-            if(ModelState.IsValid)
-            {
-
+                if (!ModelState.IsValid)
+                {
+                    // ModelState geçerli değilse, kullanıcıya hangi alanların hatalı olduğunu göstermek için aynı formu tekrar göster
+                    ViewBag.Ogrenciler = new SelectList(await _context.Ogrenciler.ToListAsync(), "OgrenciId", "AdSoyad", model.OgrenciId);
+                    ViewBag.Kurslar = new SelectList(await _context.Kurslar.ToListAsync(), "KursId", "Baslik", model.KursId);
+                    return View(model);
+                }
                 try
                 {
-                    _context.Update(model);
+                    var kurskayit = await _context.KursKayitlari
+                    .FirstOrDefaultAsync(m => m.KayitId == id);
+
+                    kurskayit.KursId = model.KursId;
+                    kurskayit.OgrenciId = model.OgrenciId;
+
+                    _context.Update(kurskayit);
                     await _context.SaveChangesAsync();
+                    return RedirectToAction("Index");
                 }
-                catch(DbUpdateException) // Daha genel Db hataları için
+                catch (DbUpdateException ex)
                 {
-                    if(!_context.KursKayitlari.Any(o => o.KayitId == model.KayitId)) // Düzeltilmek istenilen kayıt veritabanında yoksa
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
+                    // Log the exception details here to diagnose the issue
+                    ModelState.AddModelError("", "Güncelleme işlemi sırasında bir hata oluştu.");
+                    return View(model);
+
                 }
-
-                return RedirectToAction("Index");
+                
             }
-
-            return RedirectToAction("Index");
-        }
 
 
 
@@ -120,7 +123,8 @@ namespace efcoreApp.Controllers
                 return NotFound();
             }
 
-            var kurskaydi = await _context.KursKayitlari.FindAsync(id);
+            //var kurskaydi = await _context.KursKayitlari.FindAsync(id);
+            var kurskaydi = await _context.KursKayitlari.Include(o=>o.Ogrenci).Include(o=>o.Kurs).FirstOrDefaultAsync(o=>o.KayitId==id);
 
             if(kurskaydi == null)
             {

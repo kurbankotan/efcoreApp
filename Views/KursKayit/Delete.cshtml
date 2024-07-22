@@ -1,7 +1,7 @@
 @model KursKayit
 
 <p>
-    <b>@Model.KayitId </b> numaralı kurs kaydını silmek istiyor musunuz?
+    <b>@Model.Ogrenci </b> kursunu silmek istiyor musunuz?
 
     <form asp-action="Delete" method="post">
         <input type="hidden"  name="id" value="@Model.KayitId">

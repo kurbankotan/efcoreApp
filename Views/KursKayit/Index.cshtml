@@ -10,7 +10,7 @@
             <th style="width: 150px;">@Html.DisplayNameFor(m=>m.KayitId)</th>
             <th> @Html.DisplayNameFor(m=>m.Ogrenci.OgrenciAd)</th>
             <th> @Html.DisplayNameFor(m=>m.Kurs.Baslik)</th>
-            <th style="width: 180px;"></th>
+            <th style="width: 170px;"></th>
         </tr>
     </thead>
 
@@ -23,9 +23,9 @@
                 <td>@Html.DisplayFor(modelItem=>item.Ogrenci.OgrenciAd)</td>
                 <td>@Html.DisplayFor(modelItem=>item.Kurs.Baslik)</td>
                 <td>
-                    <a asp-controller="KursKayit" asp-action="Edit" asp-route-id="@item.KayitId" class="btn btn-sm btn-primary">Edit</a>
-                    <a asp-controller="KursKayit" asp-action="Delete" asp-route-id="@item.KayitId" class="btn btn-sm btn-danger">Delete</a>
-                    <a asp-controller="KursKayit" asp-action="Detail" asp-route-id="@item.KayitId" class="btn btn-sm btn-danger">Detail</a>
+                    <a asp-controller="KursKayit" asp-action="Edit" asp-route-id="@item.KayitId" class="btn btn-sm btn-primary">Düzelt</a>
+                    <a asp-controller="KursKayit" asp-action="Delete" asp-route-id="@item.KayitId" class="btn btn-sm btn-danger">Sil</a>
+                    <a asp-controller="KursKayit" asp-action="Detail" asp-route-id="@item.KayitId" class="btn btn-sm btn-danger">Detay</a>
                 </td>
             </tr>
         }

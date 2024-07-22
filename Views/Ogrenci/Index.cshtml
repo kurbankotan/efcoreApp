@@ -10,7 +10,7 @@
                 <th style="width: 150px;">@Html.DisplayNameFor(m=> m.OgrenciId)</th>
                 <th>@Html.DisplayNameFor(m=> m.OgrenciAd)</th>
                 <th>@Html.DisplayNameFor(m=> m.OgrenciSoyad)</th>
-                <th style="width: 335px;"></th>
+                <th style="width: 345px;"></th>
             </tr>
 
     </thead>
@@ -24,8 +24,8 @@
                     <td>@Html.DisplayFor(modelItem=>item.OgrenciSoyad)</td>
                     <td>
                         <a asp-controller="Ogrenci" asp-action="Edit" asp-route-id="@item.OgrenciId" class="btn btn-sm btn-primary">Bilgileri Güncelle</a>
-                        <a asp-controller="Ogrenci" asp-action="Delete" asp-route-id="@item.OgrenciId" class="btn btn-sm btn-danger">Kursiyeri Sil</a>
-                        <a asp-controller="Ogrenci" asp-action="Detail" asp-route-id="@item.OgrenciId" class="btn btn-sm btn-danger"> Adlığı Kurslar</a>
+                        <a asp-controller="Ogrenci" asp-action="Delete" asp-route-id="@item.OgrenciId" class="btn btn-sm btn-danger">Öğrenciyi Sil</a>
+                        <a asp-controller="Ogrenci" asp-action="Detail" asp-route-id="@item.OgrenciId" class="btn btn-sm btn-danger"> Aldığı Kurslar</a>
                     </td>
             </tr>
            }
