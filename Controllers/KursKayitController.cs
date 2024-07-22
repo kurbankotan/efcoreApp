@@ -90,14 +90,14 @@ namespace efcoreApp.Controllers
                     var kurskayit = await _context.KursKayitlari
                     .FirstOrDefaultAsync(m => m.KayitId == id);
 
-                    kurskayit.KursId = model.KursId;
-                    kurskayit.OgrenciId = model.OgrenciId;
+                    kurskayit!.KursId = model.KursId;
+                    kurskayit!.OgrenciId = model.OgrenciId;
 
                     _context.Update(kurskayit);
                     await _context.SaveChangesAsync();
                     return RedirectToAction("Index");
                 }
-                catch (DbUpdateException ex)
+                catch (DbUpdateException)
                 {
                     // Log the exception details here to diagnose the issue
                     ModelState.AddModelError("", "Güncelleme işlemi sırasında bir hata oluştu.");
@@ -136,7 +136,7 @@ namespace efcoreApp.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> Delete([FromForm] int id) //Model Binding nereden geliyor. Burada formdan
+        public async Task<IActionResult> Delete(int id) //Delete([FromForm] int id) --> Model Binding nereden geliyor. Burada formdan
         {
 
             var kurskaydi = await _context.KursKayitlari.FindAsync(id);
