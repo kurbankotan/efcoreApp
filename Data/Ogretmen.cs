@@ -10,12 +10,19 @@ namespace efcoreApp.Data
 
         public string? Soyad { get; set; }
 
+        public string? AdSoyad 
+        { get
+           {
+             return this.Ad + " " + this.Soyad;
+           } 
+        }
+
         public string? Eposta { get; set; }
 
         public string? Telefon { get; set; }
 
         [DataType(DataType.Date)] //Sadece Tarih. Saat olmayacak
-        [DisplayFormat(DataFormatString ="{0:dd-MM-yyyy}", ApplyFormatInEditMode =true)]
+        [DisplayFormat(DataFormatString ="{0:dd-MM-yyyy}", ApplyFormatInEditMode =false)]
         public DateTime BaslamaTarihi { get; set; }
 
         public ICollection<Kurs> Kurslar {get; set;} = new List<Kurs>();

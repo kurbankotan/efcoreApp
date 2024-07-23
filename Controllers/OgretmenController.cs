@@ -53,7 +53,7 @@ namespace efcoreApp.Controllers
                 return NotFound();
             }
 
-            var ogr = await _context.Ogretmenler.FirstOrDefaultAsync(o=>o.OgretmenId==id); //FinAsync ile sadece Id ile arama yapılır
+            var ogr = await _context.Ogretmenler.Include(o=>o.Kurslar).FirstOrDefaultAsync(o=>o.OgretmenId==id);//FinAsync ile sadece Id ile arama yapılır
             // var orgr = await _context.Ogrenciler.FirstOrDefaultAsync(o => o.Eposta == eposta ) // Sadece Id ile değil diğer alanlarla da arama yapılıp getirilir
            
             if(ogr==null)
@@ -145,24 +145,24 @@ namespace efcoreApp.Controllers
 
 
 
-        // [HttpGet]
-        // public async Task<IActionResult> Detail(int? id)
-        // {
-        //     if(id==null)
-        //     {
-        //         return NotFound();
-        //     }
+        [HttpGet]
+        public async Task<IActionResult> Detail(int? id)
+        {
+            if(id==null)
+            {
+                return NotFound();
+            }
 
-        //     var ogr = await _context.Ogrenciler.Include(o=>o.KursKayitlari).ThenInclude(o=>o.Kurs).FirstOrDefaultAsync(o=>o.OgrenciId==id); //FinAsync ile sadece Id ile arama yapılır
-        //     // var orgr = await _context.Ogrenciler.FirstOrDefaultAsync(o => o.Eposta == eposta ) // Sadece Id ile değil diğer alanlarla da arama yapılıp getirilir
+            var ogr = await _context.Ogretmenler.Include(o=>o.Kurslar).FirstOrDefaultAsync(o=>o.OgretmenId==id); //FinAsync ile sadece Id ile arama yapılır
+            // var orgr = await _context.Ogretmenler.FirstOrDefaultAsync(o => o.Eposta == eposta ) // Sadece Id ile değil diğer alanlarla da arama yapılıp getirilir
            
-        //     if(ogr==null)
-        //     {
-        //         return NotFound();
-        //     }
+            if(ogr==null)
+            {
+                return NotFound();
+            }
 
-        //     return View(ogr);
-        // }
+            return View(ogr);
+        }
 
 
 

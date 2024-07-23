@@ -41,6 +41,14 @@
 
     </div>
     <div class="col-4">
+        <h2>Verdiği Kurslar</h2>
+        <hr>
+            <ul>
+                @foreach(var item in @Model.Kurslar)
+                {
+                    <li>@item.Baslik</li>
+                }
+            </ul>
 
     </div>
 

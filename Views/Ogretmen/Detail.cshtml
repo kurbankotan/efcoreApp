@@ -1,0 +1,17 @@
+@model Ogretmen
+
+<h2>@Model.AdSoyad'ın Verdiği Kurslar</h2>
+<hr>
+
+<div class="col-4">
+    <ul>
+        @foreach(var item in @Model.Kurslar)
+        {
+            <li>@item.Baslik</li>
+        }
+    </ul>
+</div>
+
+
+
+

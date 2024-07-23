@@ -1,4 +1,4 @@
-@model Kurs
+@model KursViewModel
 
 <h2>Kurs Güncelle</h2>
 <hr>
@@ -12,9 +12,17 @@
 
             <form asp-controller = "Kurs" asp-action ="Edit" method="post">
             <input type="hidden" asp-for="KursId">
+
                 <div class="mb-3">
                     <label asp-for="Baslik" class="form-label">Kurs Adı</label>
                     <input asp-for = "Baslik" class="form-control">
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="OgretmenId" class="form-label">Öğremen</label>
+                    <select asp-for="OgretmenId" asp-items="ViewBag.Ogretmenler" class="form-select">
+                        <option value="">Seçiniz</option>
+                    </select>  
                 </div>
 
                 <button type="submit" class="btn btn-secondary">Güncelle</button>
@@ -23,7 +31,7 @@
 
     </div>
     <div class="col-4">
-        <h4>öğrenciler</h4>
+        <h4>Öğrenciler</h4>
         <hr>
         <ul>
             @foreach(var item in @Model.KursKayitlari)
