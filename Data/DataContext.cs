@@ -18,5 +18,8 @@ namespace efcoreApp.Data
         // Model first
         // Database first => veritabına önce sonra veritabanından entity'e
 
+
+        public DbSet<Ogretmen> Ogretmenler =>Set<Ogretmen>();
+
     }
 }
