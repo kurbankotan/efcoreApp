@@ -1,1 +1,1 @@
-Kurs, Öğreci, Kurs Kayıt ve Öğretmenler içeren bir çalışma
+Kurs, Öğreci, Kurs Kayıt ve Öğretmenleri ekleyen, düzenleyen ve listeleyen asp.net entity framework projesi
